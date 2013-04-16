@@ -1,4 +1,4 @@
-# Facebook Fullscreen Tapermonkey/Stylish Chrome Theme
+# Facebook Fullscreen Tampermonkey/Stylish Chrome Theme
 It's a custom theme for Facebook that's fullscreen.  I was sick and tired of normal Facebook, so I created my own.
 
 ## Features
