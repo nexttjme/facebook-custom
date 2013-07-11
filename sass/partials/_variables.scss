@@ -1,0 +1,14 @@
+$facebookCustomRightSidebarWidth: 11%;
+$facebookCustomLeftSidebarWidth: 10%;
+
+$facebookCustomContentWidth: 100% - ($facebookCustomLeftSidebarWidth + $facebookCustomRightSidebarWidth);
+$facebookCustomContentWidthLeftDisabled: 100% - ($facebookCustomRightSidebarWidth);
+$facebookCustomContentWidthRightDisabled: 100% - ($facebookCustomLeftSidebarWidth);
+
+$facebookCustomTransitionTime: 0.4s;
+$facebookCustomTransitionFunction: ease;
+
+/* =============================================================================
+Spacing
+========================================================================== */
+$facebookCustomPaddingMain: 1em;

@@ -1,0 +1,123 @@
+@import "partials/variables.scss";
+@import "partials/helpers.scss";
+@import "companimation";
+/*@import "companimation/preset";*/
+@import "companimation/preset/fade/fadeIn";
+@import "companimation/preset/fade/fadeInUp";
+
+.sidebarMode { //usually on html
+	#globalContainer {
+
+	}
+}
+
+.fbx { //usually on body
+
+	#pagelet_bluebar {
+		#blueBarHolder {
+			@extend %delayed-1;
+			@extend %fadeIn;
+			#blueBar {
+				#pageHead {
+					@extend %width-100;
+					padding: $facebookCustomPaddingMain;
+				}
+			}
+			&.slim {
+
+			}
+		}
+	}
+
+	.searchbar, ._585- {
+		max-width: 29%;
+		margin-left: ($facebookCustomLeftSidebarWidth + 1%);
+	}
+
+	/*	chat sidebar*/
+	.fbChatSidebar {
+		width: $facebookCustomRightSidebarWidth;
+	}
+
+	.ego_column {
+		@extend %width-100;
+	}
+	&.hasLeftCol {
+		#mainContainer {
+			//layout columns
+			#rightCol {
+				//width: $facebookCustomRightSidebarWidth;
+				@extend %width-100;
+				padding: $facebookCustomPaddingMain;
+				@extend %border-box;
+			}
+			#leftCol {
+				width: $facebookCustomLeftSidebarWidth;
+				min-width: 15em;
+				@extend %pull-left;
+				@extend %border-box;
+				@extend %fixed;
+			}
+			#contentArea {
+				@extend %width-100;
+				@extend %border-box;
+			}
+
+			#contentCol {
+				margin-left: $facebookCustomLeftSidebarWidth;
+				@extend %border-box;
+				&.hasRightCol {
+					margin-right: $facebookCustomRightSidebarWidth;
+				}
+			}
+		}
+	}
+	#globalContainer {
+		@extend %width-100;
+		@extend %delayed-2;
+		@extend %fadeInUp;
+
+		#mainContainer {
+			//layout columns
+			#rightCol {
+				width: $facebookCustomRightSidebarWidth;
+				@extend %pull-right;
+			}
+			#leftCol {
+				width: $facebookCustomLeftSidebarWidth;
+				@extend %pull-left;
+			}
+			#contentArea {
+				width: $facebookCustomContentWidth;
+			}
+		}
+	}
+	/*boxes*/
+	._3rbg, .box {
+		width: 30%;
+		min-width: 20em;
+		@extend %border-box;
+	}
+
+	//larger box
+	._4lh .fbTimelineUnit[data-side="r"], .large-box {
+		width: 70%;
+		min-width: 35em;
+		@extend %border-box;
+	}
+}
+
+
+.fbFeedTicker {
+	@extend %width-100;
+}
+
+.UFIContainer{
+	@extend %width-100;
+}
+
+.timelineLayout #contentArea, .timelineLayout #contentCol, ._2w3, .fbx .rightColumnWrapper .fixed_scrolling_wrapper, .tickerOnTop .rightColumnWrapper, .uiScrollableAreaBody, .homeWiderContent div#rightCol .home_right_column {
+	@extend %width-100;
+}
+
+@import "partials/media-queries.scss";

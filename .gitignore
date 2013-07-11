@@ -163,6 +163,7 @@ pip-log.txt
 .DS_Store
 
 .idea
+.sass-cache
 
 node_modules
 js/components
