@@ -2,8 +2,8 @@
 @import "partials/helpers.scss";
 @import "companimation";
 /*@import "companimation/preset";*/
-@import "companimation/preset/fade/fadeIn";
-@import "companimation/preset/fade/fadeInUp";
+@import "companimation/preset/fade";
+@import "companimation/preset/flip";
 
 .sidebarMode { //usually on html
 	#globalContainer {
@@ -57,6 +57,40 @@
 	@extend %centred;
 }
 
+.ego_page {
+	.UIStandardFrame_Container {
+		@extend %width-100;
+	}
+}
+
+.UIStandardFrame_Container {
+	@extend %width-100;
+
+	table {
+		@extend %width-100;
+	}
+}
+
+.UIStandardFrame_Content {
+	@extend %width-100;
+}
+
+//similar friends page
+
+.fbx._131 {
+	#globalContainer {
+		#mainContainer {
+			#contentArea {
+				width: 98%;
+			}
+		}
+	}
+}
+
+._69z {
+	@extend %width-100;
+}
+
 .fbx { //usually on body
 
 	#pagelet_bluebar {
@@ -78,6 +112,7 @@
 					@extend %width-100;
 					padding: $facebookCustomPaddingMain;
 				}
+				position: fixed !important;
 			}
 			&.slim {
 
@@ -111,6 +146,11 @@
 		}*/
 	}
 
+	//buttons
+	.uiButtonGroup {
+		@extend %fadeIn;
+		@extend %delayed-2;
+	}
 	&.timelineLayout {
 		#contentArea {
 			@extend %width-100;
@@ -122,6 +162,11 @@
 		}
 	}
 
+	&.pagesTimelineLayout {
+		#fbProfileCover .coverWrap .photo {
+			height: auto !important;
+		}
+	}
 	//message/inbox layout
 
 	._30f {
@@ -166,6 +211,10 @@
 	//Photos on profile
 	.fbStarGrid {
 		@extend %width-100;
+		height: auto !important;
+	}
+	.fbStarGridAppendedTo {
+		height: auto !important;
 	}
 	#pagelet_timeline_recent_more_pager {
 		@extend %centred;
@@ -177,6 +226,29 @@
 	}
 
 	//events
+
+	&.fbEventPermalink {
+		#contentArea {
+			@extend %width-100;
+		}
+	}
+	.fbEventLeftNav {
+		@extend %auto;
+	}
+	.fbEventHeader {
+		#fbProfileCover{
+			.coverImage {
+				@extend %width-100;
+				min-height: 35em;
+			}
+		}
+	}
+	.fbEventContent {
+		@extend %width-100;
+		@extend %flipInX;
+		@extend %delayed-2;
+	}
+
 	&.fbCalendar {
 		.fbCalendarHeader {
 			@extend %width-100;
@@ -261,6 +333,19 @@
 	//photos in grid on profile
 	.fbPhotoStarGridElement {
 		@extend %fadeIn;
+		margin: 1em !important;
+		float: left !important;
+		position: relative !important;
+	}
+
+	//grid
+	.uiGrid {
+		@extend %fadeIn;
+
+		td {
+			@extend %flipInY;
+			@extend %delayed-1;
+		}
 	}
 
 	//status update extra
@@ -273,6 +358,10 @@
 
 	.timelineUnitContainer {
 		@extend %border-box;
+		
+		.uiCommentContainer {
+			@extend %width-100;
+		}
 	}
 	.fbTimelineTwoColumn {
 		.timelineUnitContainer {
@@ -280,17 +369,50 @@
 		}
 	}
 
-	.uiscaledimagecontainer {
+	.uiscaledimageContainer {
 		img {
 			@extend %width-100;
 			min-height: none !important;
 			height: auto !important;
 		}
 	}
+	#NonAdminInvite {
+		@extend %width-100;
+	}
 
+	//lists
+	.uiList {
+		@extend %fadeInUp;
+		@extend %delayed-1;
+		li {
+			@extend %delayed-3;
+			@extend %fadeInUp;
+		}
+	}
+	//chat mobile view flyout
+	.fbNubFlyout {
+		@extend %fadeIn;
+	}
+
+	._2t8o .note, .note {
+		width: 49%;
+
+		&:only-child {
+			width: 100%;
+		}
+	}
+
+	.groupsJumpInfoBox {
+		@extend %width-100;
+	}
 	&.hasLeftCol {
 		#mainContainer {
 			//layout columns
+			@extend %border-box;
+			#headerArea {
+				@extend %width-100;
+				@extend %border-box;
+			}
 			#rightCol {
 				//width: $facebookCustomRightSidebarWidth;
 				@extend %width-100;
@@ -313,6 +435,19 @@
 				margin-left: $facebookCustomLeftSidebarWidth;
 				@extend %border-box;
 				@extend %transition-all;
+
+				&.groupJumpLayout {
+					.groupsEditDescriptionArea {
+						div {
+							@extend %fadeInUp;
+						}
+					}
+					.groupMemberBrowser {
+						.groupsBrowserBio {
+							@extend %auto;
+						}
+					}
+				}
 			}
 		}
 	}
