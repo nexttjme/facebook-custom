@@ -85,6 +85,9 @@ Border radius
 	@include transition($facebookCustomTransitionTime all $facebookCustomTransitionFunction);
 }
 
+%transition-none {
+	@include transition(none);
+}
 /* =============================================================================
 Opacity/visibility
 ========================================================================== */
@@ -126,6 +129,10 @@ Floats
 	position: fixed;
 }
 
+%fixed-important {
+	position: fixed !important;
+}
+
 /* =============================================================================
 Lists
 ========================================================================== */
@@ -154,7 +161,7 @@ User select
 /* =============================================================================
 Widths
 ========================================================================== */
-%width-100 {
+%width-100-important {
 	width: 100% !important;
 }
 
@@ -162,6 +169,13 @@ Widths
 	width: auto;
 }
 
+%width-auto-important {
+	width: auto !important;
+}
+
+%height-auto-important {
+	height: auto !important;
+}
 /* =============================================================================
 Animations
 ========================================================================== */

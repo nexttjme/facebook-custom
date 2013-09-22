@@ -1,49 +1,79 @@
 @import "partials/variables.scss";
 @import "partials/helpers.scss";
-@import "companimation";
-/*@import "companimation/preset";*/
-@import "companimation/preset/fade";
-@import "companimation/preset/flip";
 
-.sidebarMode { //usually on html
+.sidebarMode {
+	//usually on html
+	overflow-x: hidden;
+	$rightSpacing: $facebookCustomRightSidebarWidth + 2%;
+	#content {
+		margin-right: $rightSpacing;
+	}
+	#pageHead {
+		padding-right: $facebookCustomRightSidebarWidth + 2% !important;
+	}
 	#globalContainer {
 		#mainContainer {
 			#contentCol {
 				margin-right: $facebookCustomRightSidebarWidth;
+			}
+			#rightCol {
+				.rightColumnWrapper {
+					right: 14% !important;
+					width: 14% !important;
+					@extend %fixed;
+				}
+			}
+			#contentArea {
+				width: 94% !important;
+			}
+			#leftCol {
+				width: $facebookCustomLeftSidebarWidth - 2% !important;
 			}
 		}
 	}
 }
 
 ._41h {
-	.fbTimelineUnit{
+	.fbTimelineUnit {
 		&[data-side="r"] {
 			@extend %auto;
 		}
 	}
 	.fbTimelineUnit[data-side="r"] {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 
 	._122 {
 		.uiScaledImageContainer {
-			height: auto !important;
-			@extend %width-100;
+			@extend %height-auto-important;
+			@extend %width-100-important;
 		}
 	}
 
 	.fbTimelineTwoColumn {
 		.timelineUnitContainer {
-			@extend %width-100;
+			@extend %width-100-important;
 		}
 	}
 	.fbTimelineUFI {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 }
 
 ._4lh .fbTimelineUnit[data-side="l"] .fbTimelineFeedbackStub, ._4lh .fbTimelineUnit[data-side="l"] .fbTimelineUFI {
-	@extend %width-100;
+	@extend %width-100-important;
+}
+.pal.megaphone_box {
+	@extend %width-100-important;
+	.sourceSuggestionMegaphoneTitle {
+		@extend %width-auto-important;
+	}
+	.sourceSuggestionMegaphoneContent {
+		@extend %width-100-important;
+		#source_suggestion_picker {
+			@extend %width-100-important;
+		}
+	}
 }
 
 //padding fixes
@@ -59,20 +89,20 @@
 
 .ego_page {
 	.UIStandardFrame_Container {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 }
 
 .UIStandardFrame_Container {
-	@extend %width-100;
+	@extend %width-100-important;
 
 	table {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 }
 
 .UIStandardFrame_Content {
-	@extend %width-100;
+	@extend %width-100-important;
 }
 
 //similar friends page
@@ -82,16 +112,18 @@
 		#mainContainer {
 			#contentArea {
 				width: 98%;
+				@extend %border-box;
 			}
 		}
 	}
 }
 
 ._69z {
-	@extend %width-100;
+	@extend %width-100-important;
 }
 
-.fbx { //usually on body
+.fbx, .permalinkBody  {
+	//usually on body
 
 	#pagelet_bluebar {
 		._585- {
@@ -105,12 +137,16 @@
 			}
 		}
 		#blueBarHolder {
-			@extend %delayed-1;
-			@extend %fadeIn;
+
 			#blueBar {
 				#pageHead {
-					@extend %width-100;
+					@extend %width-100-important;
+					@extend %border-box;
 					padding: $facebookCustomPaddingMain;
+				}
+				#pageNav {
+					@extend %margin-none;
+					padding-right: 1em;
 				}
 				position: fixed !important;
 			}
@@ -122,7 +158,7 @@
 
 	//footer
 	#pageFooter {
-		@extend %width-100;
+		@extend %width-100-important;
 		@extend %centred;
 		.navigationGrid {
 			margin: 0 auto;
@@ -133,27 +169,43 @@
 		margin-left: ($facebookCustomLeftSidebarWidth + 1%);
 	}
 	.shareRedesign {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 	//links
 	a {
 		@extend %transition-all;
-/*		&:link {
-			&:after {
-				content: "->";
-				margin-left: 0.4em;
-			}
-		}*/
+		&.highlightSelectorButton {
+			@extend %transition-none;
+		}
+		/*		&:link {
+					&:after {
+						content: "->";
+						margin-left: 0.4em;
+					}
+				}*/
 	}
 
+	//recommended pages
+	#pagelet_page_browser_right_column {
+		@extend %fixed;
+	}
+
+	/* =============================================================================
+	Browsing Facebook
+	========================================================================== */
+	#BrowseResultsContainer {
+		._1zf {
+			max-width: none !important;
+			@extend %width-100-important;
+		}
+	}
 	//buttons
 	.uiButtonGroup {
-		@extend %fadeIn;
-		@extend %delayed-2;
+
 	}
 	&.timelineLayout {
 		#contentArea {
-			@extend %width-100;
+			@extend %width-100-important;
 		}
 		#rightCol {
 			@extend %absolute;
@@ -164,13 +216,33 @@
 
 	&.pagesTimelineLayout {
 		#fbProfileCover .coverWrap .photo {
-			height: auto !important;
+			@extend %height-auto-important;
 		}
 	}
 	//message/inbox layout
 
 	._30f {
-		@extend %fadeInUp;
+
+	}
+
+	._4z0 {
+		@extend %width-auto-important;
+	}
+	.wmMasterView {
+		width: 30% !important; //message sidebar width
+	}
+	//dropdown arrow in sidebar
+	._283 {
+		right: 1em !important;
+	}
+	._2nb {
+		//messages container (aria-main)
+		@extend %border-box;
+		width: 70% !important;
+	}
+	._2nc {
+		//uiscrollable area for messages
+		@extend %width-auto-important;
 	}
 
 	._4_g4 {
@@ -179,27 +251,41 @@
 
 	._4q0 {
 		.fbTimelineSection {
-			@extend %width-100;
+			@extend %width-100-important;
+		}
+	}
+	.pagesTimelineButtonPagelet {
+		&.fixed_elem {
+			left: 45%;
+		}
+	}
+	.fbTimelineScrubber {
+		right: 0;
+		top: 4.5em;
+	}
+	.fbTimelineStickyHeader {
+		.stickyHeaderWrap {
+			.back {
+				@extend %width-100-important;
+			}
 		}
 	}
 	.fbProfileEditExperiences .experience {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 	//soundcloud wrapper on profile
 	._kk2 {
-		@extend %width-100;
+		@extend %width-100-important;
 
 		div {
-			@extend %fadeInUp;
-			@extend %delayed-1;
+
 		}
 	}
 
 	.uiStreamStory {
-		@extend %fadeIn;
 
 		.photoRedesign {
-			@extend %width-100;
+			@extend %width-100-important;
 
 			//main pic in set on timeline
 			.mbs {
@@ -210,11 +296,11 @@
 
 	//Photos on profile
 	.fbStarGrid {
-		@extend %width-100;
-		height: auto !important;
+		@extend %width-100-important;
+		@extend %height-auto-important;
 	}
 	.fbStarGridAppendedTo {
-		height: auto !important;
+		@extend %height-auto-important;
 	}
 	#pagelet_timeline_recent_more_pager {
 		@extend %centred;
@@ -222,53 +308,75 @@
 	/*	chat sidebar*/
 	.fbChatSidebar {
 		width: $facebookCustomRightSidebarWidth;
-		@extend %fadeIn;
+
 	}
 
 	//events
 
 	&.fbEventPermalink {
 		#contentArea {
-			@extend %width-100;
+			@extend %width-100-important;
 		}
 	}
 	.fbEventLeftNav {
 		@extend %auto;
 	}
 	.fbEventHeader {
-		#fbProfileCover{
+		#fbProfileCover {
 			.coverImage {
-				@extend %width-100;
+				@extend %width-100-important;
 				min-height: 35em;
 			}
 		}
 	}
 	.fbEventContent {
-		@extend %width-100;
-		@extend %flipInX;
-		@extend %delayed-2;
+		@extend %width-100-important;
 	}
-
+	.uiHeaderActions {
+		padding-right: 3em;
+	}
 	&.fbCalendar {
 		.fbCalendarHeader {
-			@extend %width-100;
+			@extend %width-100-important;
+			.fbCalendarHeaderBorder {
+				@extend %width-100-important;
+			}
+		}
+		.fbCalendarGridTable {
+			@extend %width-100-important;
+			@extend %margin-none;
+			padding: 1em;
+			@extend %border-box;
+			.fbCalendarGridCell {
+				width: 16%;
+			}
+		}
+		.fbCalendarList, .fbCalendarPager {
+			@extend %width-100-important;
+		}
+		.fbCalendarItemContent {
+			@extend %width-100-important;
+		}
+		.fbCalendarMonthWrapper {
+			background: #FFF;
 		}
 		#globalContainer {
 			#mainContainer {
 				#contentArea {
-					@extend %width-100;
+					@extend %width-100-important;
+					@extend %border-box;
 				}
 			}
 		}
 		#fbCalendarWrapper {
-			@extend %width-100;
+			@extend %width-100-important;
 		}
 		.fbCalendarBox {
-			@extend %width-100;
+			@extend %width-100-important;
 
 			.mbm {
 				div.lfloat {
-					@extend %width-100;
+					@extend %width-100-important;
 				}
 			}
 
@@ -280,7 +388,7 @@
 		.fbCalendarListView {
 			.fbCalendarList {
 				.fbCalendarPager {
-					@extend %width-100;
+					@extend %width-100-important;
 				}
 			}
 		}
@@ -288,7 +396,7 @@
 	//fixed elements that really shouldn't be
 
 	.ego_column {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 
 	//disable image borders
@@ -305,34 +413,33 @@
 		@extend %auto;
 	}
 	.fbTimelineFriendsBoxLarge {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 	._4_vp {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 	._55dq {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 
 	//modals
 	._3qw {
-		@extend %fadeIn;
+
 	}
 
 	._n3 {
-		@extend %fadeInUp;
-		@extend %delayed-1;
+
 	}
 
 	//tooltips
-	.uiTooltipX, .uiPopover, .uiContextualLayer, .rg3fbpz-tooltip   {
-		@extend %fadeIn;
+	.uiTooltipX, .uiPopover, .uiContextualLayer, .rg3fbpz-tooltip {
+
 		@extend %transition-all;
 	}
 
 	//photos in grid on profile
 	.fbPhotoStarGridElement {
-		@extend %fadeIn;
+
 		margin: 1em !important;
 		float: left !important;
 		position: relative !important;
@@ -340,58 +447,57 @@
 
 	//grid
 	.uiGrid {
-		@extend %fadeIn;
 
 		td {
-			@extend %flipInY;
-			@extend %delayed-1;
+
 		}
 	}
 
 	//status update extra
 	._1dsp {
-		@extend %fadeIn;
+
 	}
 	.fbTimelineComposerUnit {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 
 	.timelineUnitContainer {
 		@extend %border-box;
-		
+
 		.uiCommentContainer {
-			@extend %width-100;
+			@extend %width-100-important;
 		}
 	}
 	.fbTimelineTwoColumn {
 		.timelineUnitContainer {
-			@extend %width-100;
+			@extend %width-100-important;
 		}
 	}
 
-	.uiscaledimageContainer {
+	.uiScaledImageContainer {
 		img {
-			@extend %width-100;
+			//@extend %width-100-important;
 			min-height: none !important;
-			height: auto !important;
+			@extend %height-auto-important;
 		}
 	}
 	#NonAdminInvite {
-		@extend %width-100;
+		@extend %width-100-important;
 	}
 
 	//lists
+	._k- { //inbox list of messages
+		@extend %transition-all;
+	}
 	.uiList {
-		@extend %fadeInUp;
-		@extend %delayed-1;
+
 		li {
-			@extend %delayed-3;
-			@extend %fadeInUp;
+
 		}
 	}
 	//chat mobile view flyout
 	.fbNubFlyout {
-		@extend %fadeIn;
+
 	}
 
 	._2t8o .note, .note {
@@ -403,19 +509,29 @@
 	}
 
 	.groupsJumpInfoBox {
-		@extend %width-100;
+		@extend %width-100-important;
+	}
+	.groupsJumpInfoArea {
+		@extend %margin-none;
+		padding: 1em 2.8em 0.5em 0;
+		@extend %border-box;
+	}
+	.groupsJumpBarTop {
+		@extend %width-100-important;
+	}
+	.groupsCoverPhoto {
+		@extend %width-100-important;
 	}
 	&.hasLeftCol {
 		#mainContainer {
 			//layout columns
 			@extend %border-box;
 			#headerArea {
-				@extend %width-100;
+				@extend %width-100-important;
 				@extend %border-box;
 			}
 			#rightCol {
-				//width: $facebookCustomRightSidebarWidth;
-				@extend %width-100;
+				width: $facebookCustomRightSidebarWidth;
 				padding: $facebookCustomPaddingMain;
 				@extend %border-box;
 			}
@@ -427,7 +543,7 @@
 				@extend %fixed;
 			}
 			#contentArea {
-				@extend %width-100;
+				//@extend %width-100-important;
 				@extend %border-box;
 			}
 
@@ -437,11 +553,6 @@
 				@extend %transition-all;
 
 				&.groupJumpLayout {
-					.groupsEditDescriptionArea {
-						div {
-							@extend %fadeInUp;
-						}
-					}
 					.groupMemberBrowser {
 						.groupsBrowserBio {
 							@extend %auto;
@@ -451,16 +562,50 @@
 			}
 		}
 	}
+	&._5262 { //inbox
+		#globalContainer {
+			#mainContainer {
+				#contentArea {
+					width: 85%;
+				}
+			}
+		}
+	}
 	#globalContainer {
-		@extend %width-100;
-		@extend %delayed-2;
-		@extend %fadeInUp;
+		@extend %width-100-important;
 
 		#mainContainer {
+			.groupJumpLayout {
+				#rightCol {
+					&[role="complementary"] {
+						@extend %fixed;
+						right: 0;
+						top: 30em;
+						@extend %height-auto-important;
+					}
+				}
+			}
 			//layout columns
 			#rightCol {
-				width: $facebookCustomRightSidebarWidth;
+				@extend %width-auto-important;
 				@extend %pull-right;
+				//right sidebar ticker
+				&[role="complementary"] { //I really shouldn't care
+					//stupid stuff on sidebar's content
+					._82 {
+						padding: 1em;
+						@extend %margin-none;
+					}
+				}
+				.rightColumnWrapper {
+					z-index: 9999;
+					right: 1em;
+					width: 19%;
+					&.fixed_elem {
+						@extend %fixed-important;
+						top: 7.8em !important;
+					}
+				}
 			}
 			#leftCol {
 				width: $facebookCustomLeftSidebarWidth;
@@ -471,15 +616,18 @@
 				&._2nb {
 					width: $facebookCustomContentWidthRightDisabled;
 					._2nj {
-						@extend %width-100;
+						@extend %width-100-important;
+					}
+				}
+				& + #rightCol {
+					&[role="complementary"] { //I don't care
+						@if $facebookCustomInboxSidebar == true {
+							@extend %hidden;
+						}
 					}
 				}
 				//timeline
 				.fbTimelineSection {
-					&.fbTimelineCompactSection {
-
-					}
-
 					//prevent line issue on profile page
 					&.fbTimelineTopSection {
 						border: none;
@@ -507,8 +655,8 @@
 						@extend %transition-all;
 						@extend %border-box;
 						margin: 1em;
-						@extend %fadeInUp;
-						@extend %width-100;
+
+						@extend %width-100-important;
 					}
 				}
 			}
@@ -528,18 +676,16 @@
 
 	//timelines
 	.timelineReportContainer {
-		@extend %width-100;
+		@extend %width-100-important;
 		table {
-			@extend %width-100;
+			@extend %width-100-important;
 		}
 		.timelineReportContent {
 			.timelineUnitContainer {
 				padding: 1em;
-				//@extend %width-100;
+				//@extend %width-100-important;
 				&._503z {
-					@extend %width-100;
-					@extend %fadeIn;
-					@extend %delayed-3;
+					@extend %width-100-important;
 				}
 			}
 		}
@@ -550,30 +696,49 @@
 		@extend %margin-none;
 		@extend %border-box;
 		.photoWrap {
-			height: auto !important;
-			@extend %width-100;
+			@extend %height-auto-important;
+			@extend %width-100-important;
 		}
 		.photo {
-			@extend %width-100;
+			@extend %width-100-important;
 			float: none;
+		}
+	}
+
+	/* =============================================================================
+	Notes
+	========================================================================== */
+	._4bmm {
+		@extend %width-auto-important;
+		div[role="main"] {
+			width: 80%;
+			@extend %border-box;
+			& + div {
+				width: 20%;
+				@extend %margin-none;
+				padding: 1em;
+				@extend %border-box;
+				div {
+					@extend %width-auto-important;
+				}
+			}
 		}
 	}
 }
 
-
 .fbFeedTicker {
-	@extend %width-100;
+	@extend %width-100-important;
 	.tickerStoryClickable {
 		@extend %transition-all;
 	}
 	.ticker_container {
-		@extend %width-100;
+		@extend %width-100-important;
 
 		.tickerStoryImage {
 			width: 3%;
 			min-width: 3em;
 			max-width: 10em;
-			height: auto;
+			@extend %height-auto-important;
 		}
 		.tickerStoryContent {
 			max-width: none;
@@ -587,12 +752,13 @@
 		@extend %transition-all;
 	}
 }
-.UFIContainer{
-	@extend %width-100;
+
+.UFIContainer {
+	@extend %width-100-important;
 }
 
-.timelineLayout #contentArea, .timelineLayout #contentCol, ._2w3, .fbx .rightColumnWrapper .fixed_scrolling_wrapper, .tickerOnTop .rightColumnWrapper, .uiScrollableAreaBody, .homeWiderContent div#rightCol .home_right_column {
-	@extend %width-100;
+.timelineLayout #contentArea, .timelineLayout #contentCol, ._2w3, .fbx .rightColumnWrapper .fixed_scrolling_wrapper, .uiScrollableAreaBody, .homeWiderContent div#rightCol .home_right_column {
+	@extend %width-100-important;
 }
 
 @import "partials/media-queries.scss";

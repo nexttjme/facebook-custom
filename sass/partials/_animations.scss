@@ -1,0 +1,135 @@
+@import "variables.scss";
+@import "helpers.scss";
+@import "companimation";
+/*@import "companimation/preset";*/
+@import "companimation/preset/fade";
+@import "companimation/preset/flip";
+
+
+.fbx { //usually on body
+
+	#pagelet_bluebar {
+		#blueBarHolder {
+			@extend %delayed-1;
+			@extend %fadeIn;
+		}
+	}
+
+	//buttons
+	.uiButtonGroup {
+		@extend %fadeIn;
+		@extend %delayed-2;
+	}
+	//message/inbox layout
+
+	._30f {
+		@extend %fadeInUp;
+	}
+	//soundcloud wrapper on profile
+	._kk2 {
+		div {
+			@extend %fadeInUp;
+			@extend %delayed-1;
+		}
+	}
+
+	.uiStreamStory {
+		@extend %fadeIn;
+	}
+	/*	chat sidebar*/
+	.fbChatSidebar {
+		@extend %fadeIn;
+	}
+
+	.fbEventContent {
+		@extend %flipInX;
+		@extend %delayed-2;
+	}
+
+	//modals
+	._3qw {
+		@extend %fadeIn;
+	}
+
+	._n3 {
+		@extend %fadeInUp;
+		@extend %delayed-1;
+	}
+
+	//tooltips
+	.uiTooltipX, .uiPopover, .uiContextualLayer, .rg3fbpz-tooltip   {
+		@extend %fadeIn;
+	}
+
+	//photos in grid on profile
+	.fbPhotoStarGridElement {
+		@extend %fadeIn;
+	}
+
+	//grid
+	.uiGrid {
+		@extend %fadeIn;
+
+		td {
+			@extend %flipInY;
+			@extend %delayed-1;
+		}
+	}
+
+	//status update extra
+	._1dsp {
+		@extend %fadeIn;
+	}
+	//lists
+	.uiList {
+		@extend %fadeInUp;
+		@extend %delayed-1;
+		li {
+			@extend %delayed-3;
+			@extend %fadeInUp;
+		}
+	}
+	//chat mobile view flyout
+	.fbNubFlyout {
+		@extend %fadeIn;
+	}
+
+	&.hasLeftCol {
+		#mainContainer {
+			#contentCol {
+				&.groupJumpLayout {
+					.groupsEditDescriptionArea {
+						div {
+							@extend %fadeInUp;
+						}
+					}
+				}
+			}
+		}
+	}
+	#globalContainer {
+		@extend %delayed-2;
+		@extend %fadeInUp;
+
+		#mainContainer {
+			#contentArea {
+				.fbTimelineSection {
+					.fbTimelineUnit {
+						@extend %fadeInUp;
+					}
+				}
+			}
+		}
+	}
+
+	//timelines
+	.timelineReportContainer {
+		.timelineReportContent {
+			.timelineUnitContainer {
+				&._503z {
+					@extend %fadeIn;
+				}
+			}
+		}
+	}
+}
